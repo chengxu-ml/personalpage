@@ -4,105 +4,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng - Developer</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <title>My Portfolio</title>
     <style>
         body {
-            font-family: 'Press Start 2P', cursive;
             margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-        }
-
-        header {
-            padding: 20px;
-            background-color: #222;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 14px;
-        }
-
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #333;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #00ff00;
-            /* Green text */
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+            background-color: #0a0a0a;
+            color: white;
+            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
         }
 
-        li {
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .navbar {
+            display: flex;
+            background: #1a1a1a;
+            align-items: center;
+            padding: 5px 20px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            height: 35px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
             font-size: 16px;
-            margin-bottom: 10px;
         }
 
-        footer {
-            text-align: center;
+        .navbar .name {
+            font-weight: bold;
+            margin-right: 150px;
+            margin-left: 40px;
+        }
+
+        .navbar .links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            margin-top: 35px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background: #121212;
             padding: 20px;
-            background-color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            position: fixed;
+            top: 35px;
+            left: 0;
+        }
+
+        .sidebar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .sidebar h2,
+        .sidebar p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 50px;
+            text-align: center;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .active {
+            display: block;
         }
     </style>
 </head>
 
 <body>
+    <canvas id="background"></canvas>
+    <div class="navbar">
+        <a href="#" class="name" onclick="showPage('home')">My Name</a>
+        <div class="links">
+            <a href="#" onclick="showPage('projects')">Projects</a>
+            <a href="#" onclick="showPage('sport-center')">Sport Center</a>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="sidebar">
+            <img src="https://yt3.googleusercontent.com/ytc/AIdro_m6FmQmC8t1yaxb5cHRRc-WVzGtix-v9ie5zZ30_tnoKr7u=s900-c-k-c0x00ffffff-no-rj"
+                alt="My Photo">
+            <h2>My Name</h2>
+            <p>My Title</p>
+        </div>
+        <div class="content-wrapper">
+            <!-- Home Section -->
+            <div id="home" class="section active">
+                <h1>Welcome to My Portfolio</h1>
+                <p>About Me | Projects | Sport Center</p>
+            </div>
 
-    <header>
-        <h1>Cheng</h1>
-        <p>Email: zovier.xy@gmail.com</p>
-    </header>
+            <!-- Projects Section -->
+            <div id="projects" class="section">
+                <h2>Projects</h2>
 
-    <section>
-        <h2>About Me</h2>
-        <p>
-            Welcome to my pixelated corner of the web! I'm Cheng, a passionate developer with expertise in C++, AI,
-            Computer Vision, Python, Javascript, Android, and Full Stack development.
-        </p>
-        <p>
-            In the digital realm, I turn ideas into code and pixels into solutions. Let's embark on a coding journey
-            together and bring your projects to life!
-        </p>
-    </section>
+                <!-- Project 1 -->
+                <div class="project">
+                    <h3>Project 1: My Awesome Web App</h3>
+                    <p><strong>Description:</strong> A web app that allows users to create and manage their tasks. It
+                        uses Vue.js for the frontend and Firebase for the backend.</p>
+                    <p><strong>Skills:</strong> Vue.js, Firebase, JavaScript, HTML, CSS</p>
+                    <p><strong>Link to YouTube Demo:</strong> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                            target="_blank">Watch Demo</a></p>
+                </div>
 
-    <section>
-        <h2>Skills</h2>
-        <ul>
-            <li>C++</li>
-            <li>AI</li>
-            <li>Computer Vision</li>
-            <li>Python</li>
-            <li>Javascript</li>
-            <li>Android</li>
-            <li>Full Stack</li>
-        </ul>
-    </section>
+                <!-- Project 2 -->
+                <div class="project">
+                    <h3>Project 2: Interactive Dashboard</h3>
+                    <p><strong>Description:</strong> An interactive dashboard to visualize data in real-time. Built with
+                        React.js and D3.js for visualizations.</p>
+                    <p><strong>Skills:</strong> React.js, D3.js, JavaScript, CSS</p>
+                    <p><strong>Link to YouTube Demo:</strong> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                            target="_blank">Watch Demo</a></p>
+                </div>
 
-    <footer>
-        <p>&copy; 2023 Cheng. All rights reserved.</p>
-    </footer>
+                <!-- More projects can be added here -->
+            </div>
 
+
+            <!-- Sport Center Section -->
+            <div id="sport-center" class="section">
+                <h2>Sport Center</h2>
+                <p>Details about my sports interests and activities.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the selected page and hide others
+        function showPage(page) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show the selected section
+            const selectedPage = document.getElementById(page);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+        }
+
+        const canvas = document.getElementById('background');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let points = [];
+        const numPoints = 50;
+
+        for (let i = 0; i < numPoints; i++) {
+            points.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 1.5,
+                vy: (Math.random() - 0.5) * 1.5
+            });
+        }
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+
+            for (let i = 0; i < points.length; i++) {
+                let p1 = points[i];
+                ctx.beginPath();
+                ctx.arc(p1.x, p1.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                    if (dist < 120) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / 120})`;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            updatePoints();
+            requestAnimationFrame(drawBackground);
+        }
+
+        function updatePoints() {
+            points.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            });
+        }
+
+        drawBackground();
+    </script>
 </body>
 
 </html>
