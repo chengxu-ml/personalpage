@@ -45,6 +45,7 @@
 
         .navbar .name {
             font-weight: bold;
+            font-size: 20px;
             margin-right: 150px;
             margin-left: 40px;
         }
@@ -60,7 +61,7 @@
         }
 
         .sidebar {
-            width: 200px;
+            width: 250px;
             background: #121212;
             padding: 20px;
             display: flex;
@@ -70,6 +71,7 @@
             position: fixed;
             top: 35px;
             left: 0;
+            box-sizing: border-box;
         }
 
         .sidebar img {
@@ -79,17 +81,47 @@
             margin-bottom: 15px;
         }
 
-        .sidebar h2,
-        .sidebar p {
+        .sidebar h2 {
             margin: 5px 0;
+            font-size: 22px;
+            font-weight: bold;
             text-align: center;
         }
 
-        .content-wrapper {
-            margin-left: 250px;
-            width: calc(100% - 250px);
-            padding: 50px;
+        .sidebar p {
+            margin: 5px 0;
             text-align: center;
+            font-size: 14px;
+        }
+
+        .education {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .education h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff5733;
+            /* Color to match the rest of the text */
+        }
+
+        .education p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-left: 250px;
+            /* Adjust to account for sidebar width */
+            box-sizing: border-box;
         }
 
         .section {
@@ -99,15 +131,107 @@
         .active {
             display: block;
         }
+
+        .intro {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: normal;
+        }
+
+        .ml {
+            color: #ff5733;
+        }
+
+        .embedded {
+            color: #33ff57;
+        }
+
+        .home-content {
+            max-width: 600px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .home-content h1 {
+            font-size: 3.5rem;
+            font-weight: lighter;
+            margin-bottom: 15px;
+        }
+
+        .home-content p {
+            font-size: 2.0rem;
+            font-weight: lighter;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        #experience {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        #experience img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #experience h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #ffaa33;
+            /* Slightly stronger orange for headings */
+        }
+
+        /* Individual Experience Items */
+        .experience-item {
+            background-color: #1e1e1e;
+            /* Dark background for contrast */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            /* More spacing between items */
+            box-shadow: 0px 0px 10px rgba(255, 204, 102, 0.3);
+            /* Subtle glow effect */
+        }
+
+        .experience-item h3 {
+            font-size: 1.5em;
+            color: #ffb84d;
+            /* Slightly lighter orange */
+            margin-bottom: 10px;
+        }
+
+        .experience-item p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+
+        .experience-item strong {
+            color: #ff9900;
+            /* Stronger orange for key details */
+        }
+
+        .experience-item ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .experience-item ul li {
+            font-size: 1em;
+            line-height: 1.6;
+        }
     </style>
 </head>
 
 <body>
     <canvas id="background"></canvas>
     <div class="navbar">
-        <a href="#" class="name" onclick="showPage('home')">My Name</a>
+        <a href="#" class="name" onclick="showPage('home')"><strong>My Name</strong></a>
         <div class="links">
-            <a href="#" onclick="showPage('projects')">Projects</a>
+            <a href="#" onclick="showPage('experience')">Experience</a>
             <a href="#" onclick="showPage('sport-center')">Sport Center</a>
         </div>
     </div>
@@ -115,41 +239,156 @@
         <div class="sidebar">
             <img src="https://yt3.googleusercontent.com/ytc/AIdro_m6FmQmC8t1yaxb5cHRRc-WVzGtix-v9ie5zZ30_tnoKr7u=s900-c-k-c0x00ffffff-no-rj"
                 alt="My Photo">
-            <h2>My Name</h2>
-            <p>My Title</p>
+            <h2><strong>My Name</strong></h2>
+            <p>Machine Learning Engineer</p>
+            <p>Embedded System Engineer</p>
+
+            <!-- Education Section -->
+            <div class="education">
+                <h3>Education</h3>
+                <p><strong>Master's in Computer Science</strong> - XYZ University, 2021</p>
+                <p><strong>Bachelor's in Electronics Engineering</strong> - ABC University, 2017</p>
+            </div>
         </div>
         <div class="content-wrapper">
             <!-- Home Section -->
-            <div id="home" class="section active">
-                <h1>Welcome to My Portfolio</h1>
-                <p>About Me | Projects | Sport Center</p>
+            <div id="home" class="home-content">
+                <h1><strong>Hi, I’m My Name.</strong></h1>
+                <p>
+                    I'm <strong class="ml">Machine Learning Engineer</strong> with over 2 years of experience.<br>
+                    I specialize in <span class="highlight">Computer Vision</span>, <span class="highlight">Deep
+                        Learning
+                    </span>, and <span class="highlight">Robotic Projects</span>.<br>
+                    I'm also <strong class="embedded">Embedded System Engineer</strong> with 7 years of experience.<br>
+                    I work extensively with <span class="highlight">Linux</span> as well as <span class="highlight">Qt
+                        Projects</span>.
+                </p>
             </div>
 
             <!-- Projects Section -->
-            <div id="projects" class="section">
-                <h2>Projects</h2>
+            <div id="experience" class="section">
+                <h2>Experience</h2>
 
-                <!-- Project 1 -->
-                <div class="project">
-                    <h3>Project 1: My Awesome Web App</h3>
-                    <p><strong>Description:</strong> A web app that allows users to create and manage their tasks. It
-                        uses Vue.js for the frontend and Firebase for the backend.</p>
-                    <p><strong>Skills:</strong> Vue.js, Firebase, JavaScript, HTML, CSS</p>
-                    <p><strong>Link to YouTube Demo:</strong> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                            target="_blank">Watch Demo</a></p>
+                <!-- Current Position -->
+                <div class="experience-item">
+                    <h3>Machine Learning Engineer at Ipsumtek (Sorgues, France)</h3>
+                    <p><strong>Sept 2023 - Present</strong></p>
+                    <p><strong>Technologies:</strong> Python, Pytorch, OpenCV, Linux, ROS, Moveit, C++, JavaScript,
+                        Docker, Git, JIRA</p>
+                    <ul>
+                        <li>Research and training of object detection models.</li>
+                        <li>Integration of trained models in C++ with TensorRT (Nvidia Orin).</li>
+                        <li>3D object detection and robotic arm grasping.</li>
+                        <li>Camera and robotic arm calibration (head-arm calibration).</li>
+                        <li>Development of a 7-DOF robotic arm.</li>
+                        <li>Evaluation and selection of motion planners.</li>
+                        <li>Android application development for robot control.</li>
+                        <li>Scrum Master for the R&D team.</li>
+                    </ul>
+
+                    <!-- YouTube Video -->
+                    <div class="video-container">
+                        <iframe width="648" height="486"
+                            src="https://www.youtube.com/embed/4FVHUbSEI2M?list=PLCtutju7ktsQ416Ma6dPqgfbb_lugZ7Tl"
+                            title="赛文奥特曼 01 隐形的挑战者" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project">
-                    <h3>Project 2: Interactive Dashboard</h3>
-                    <p><strong>Description:</strong> An interactive dashboard to visualize data in real-time. Built with
-                        React.js and D3.js for visualizations.</p>
-                    <p><strong>Skills:</strong> React.js, D3.js, JavaScript, CSS</p>
-                    <p><strong>Link to YouTube Demo:</strong> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                            target="_blank">Watch Demo</a></p>
+                <!-- Previous Positions -->
+                <div class="experience-item">
+                    <h3>Machine Learning Engineer - Emotion3D (Vienna, Austria)</h3>
+                    <p><strong>Duration:</strong> January 2023 - June 2023</p>
+                    <p><strong>Technologies:</strong> Python, OpenCV, PyTorch, TensorFlow, Linux, C++, Docker, GIT, JIRA
+                    </p>
+                    <ul>
+                        <li>Research on heartbeat detection from images using AI.</li>
+                        <li>Development and adaptation of machine learning algorithms for real-time human behavior
+                            analysis and wall segmentation from images.</li>
+                        <li>Implementation in C++ for 3D human body analysis from images.</li>
+                        <li>Extension of the training pipeline in Python to generate new features for machine learning
+                            applications.</li>
+                    </ul>
+                    <img src="assets/images/compress_image.jpg" alt="Experience Image">
                 </div>
 
-                <!-- More projects can be added here -->
+                <div class="experience-item">
+                    <h3>Data Science Intern - Teamwork Corporate (Lyon, France)</h3>
+                    <p><strong>Duration:</strong> September 2021 - September 2022</p>
+                    <p><strong>Technologies:</strong> Python, PyTorch, TensorFlow, AWS, GIT, Dataiku, CRISP-DM</p>
+                    <ul>
+                        <li>Research on object detection for predictive maintenance projects.</li>
+                        <li>Statistical analysis of social media data to enhance client visibility.</li>
+                        <li>Selection of optimal metrics to identify the best model.</li>
+                        <li>Integration of the model into the project using AWS SageMaker.</li>
+                        <li>Implementation of CRISP-DM methodology for the data science team.</li>
+                        <li>Intern training.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Embedded Software Engineer - LM Control (Lyon, France)</h3>
+                    <p><strong>Duration:</strong> June 2019 - June 2021</p>
+                    <p><strong>Technologies:</strong> Python, C++, Android, Qt, GIT, PostgreSQL</p>
+                    <ul>
+                        <li>Project estimation and budgeting.</li>
+                        <li>Development of desktop, server, and embedded software.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Software Engineer - Mediane Systeme (Lyon, France)</h3>
+                    <p><strong>Duration:</strong> September 2018 - June 2019</p>
+                    <p><strong>Technologies:</strong> Python, C++, Qt, GIT, PostgreSQL, OpenSSL</p>
+                    <ul>
+                        <li>Software feature development (Python, C++).</li>
+                        <li>Automated test script development.</li>
+                        <li>Regression testing.</li>
+                        <li>Software updates to enhance security.</li>
+                        <li>Functional test script writing for industrial test benches.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Software Consultant - Guarani (Aix-en-Provence, France)</h3>
+                    <p><strong>Duration:</strong> July 2017 - July 2018</p>
+                    <p><strong>Technologies:</strong> C++, Qt, GIT, PostgreSQL</p>
+                    <ul>
+                        <li>Development of software for acoustic measurement systems.</li>
+                        <li>System design using UML based on client requirements.</li>
+                        <li>API documentation for previous systems.</li>
+                        <li>Development and maintenance of an ultrasound system.</li>
+                        <li>Software maintenance and updates.</li>
+                        <li>Automatic software update system development.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Embedded Software Engineer - Televic (Shanghai, China)</h3>
+                    <p><strong>Duration:</strong> September 2016 - July 2017</p>
+                    <p><strong>Technologies:</strong> C++, C, Python, CMake, Qt, BASH, Ubuntu, JSON, PostgreSQL</p>
+                    <ul>
+                        <li>Development of embedded Linux systems for healthcare applications.</li>
+                        <li>Migration of projects from C to C++.</li>
+                        <li>Scripting for system updates.</li>
+                        <li>SQL scripting for Hospital Information System (HIS) databases.</li>
+                        <li>API development for partner companies (JSON-based).</li>
+                        <li>Project and supplier tracking using JIRA.</li>
+                        <li>Provided C++ training to junior colleagues.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>R&D Intern - PSA Peugeot Citroën (Vélizy, France)</h3>
+                    <p><strong>Duration:</strong> March 2015 - September 2015</p>
+                    <p><strong>Technologies:</strong> C++, C, Qt, Kanzi, MAYA</p>
+                    <ul>
+                        <li>Development of toolchain software using C++, Qt, and QML.</li>
+                        <li>2D Human-Machine Interface (HMI) development for vehicles.</li>
+                        <li>Research on real-time 3D HMI development using KANZI, MAYA, Qt, and Python.</li>
+                    </ul>
+                </div>
             </div>
 
 
@@ -162,18 +401,26 @@
     </div>
 
     <script>
-        // Function to show the selected page and hide others
         function showPage(page) {
-            // Hide all sections
             const sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
+
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+
+            // Hide home content when navigating to another section
+            document.querySelector('.home-content').style.display = page === 'home' ? 'block' : 'none';
 
             // Show the selected section
             const selectedPage = document.getElementById(page);
             if (selectedPage) {
                 selectedPage.classList.add('active');
+                selectedPage.style.display = 'block';
             }
         }
+
 
         const canvas = document.getElementById('background');
         const ctx = canvas.getContext('2d');
