@@ -26,34 +26,81 @@
 
         .navbar {
             display: flex;
-            background: #1a1a1a;
             align-items: center;
-            padding: 5px 20px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
+            justify-content: flex-start;
+            /* Align all items to the left */
+            background: linear-gradient(90deg, #ff9100, #ff6600);
+            padding: 15px 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            height: 35px;
         }
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
+        /* Name Section */
         .navbar .name {
+            font-size: 22px;
             font-weight: bold;
-            font-size: 20px;
-            margin-right: 150px;
-            margin-left: 40px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
         }
 
-        .navbar .links {
-            display: flex;
-            gap: 20px;
+        .navbar .name:hover {
+            color: #222;
         }
+
+        /* Links Section */
+        .navbar .links a {
+            margin-left: 20px;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            padding: 5px 10px;
+            transition: all 0.3s ease-in-out;
+            margin-left: 150px;
+        }
+
+        /* Hover & Active Link Effects */
+        .navbar .links a:hover,
+        .navbar .links a.active {
+            color: #222;
+            font-weight: bold;
+        }
+
+        .navbar .links a::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 3px;
+            background: #222;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .navbar .links a:hover::after,
+        .navbar .links a.active::after {
+            width: 100%;
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar .links {
+                margin-top: 10px;
+            }
+
+            .navbar .links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+
 
         .main-container {
             display: flex;
@@ -69,7 +116,7 @@
             align-items: center;
             height: 100vh;
             position: fixed;
-            top: 35px;
+            top: 0px;
             left: 0;
             box-sizing: border-box;
         }
@@ -79,6 +126,7 @@
             height: 120px;
             border-radius: 50%;
             margin-bottom: 15px;
+            margin-top: 75px;
         }
 
         .sidebar h2 {
@@ -223,6 +271,93 @@
             font-size: 1em;
             line-height: 1.6;
         }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin: 50px auto;
+            padding: 20px 0;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #FFA500, #FFD700);
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .timeline-item .dot {
+            width: 16px;
+            height: 16px;
+            background: #FFA500;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover .dot {
+            transform: scale(1.5);
+            background: #FFD700;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            font-size: 14px;
+            color: white;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: black;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: none;
+            pointer-events: none;
+        }
+
+        #sport-center {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            text-align: center;
+            color: #FFD700;
+            /* Between yellow and orange */
+        }
+
+        .sport-item {
+            margin-top: 30px;
+        }
+
+        .sport-item strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sport-item img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5);
+        }
     </style>
 </head>
 
@@ -232,9 +367,10 @@
         <a href="#" class="name" onclick="showPage('home')"><strong>My Name</strong></a>
         <div class="links">
             <a href="#" onclick="showPage('experience')">Experience</a>
-            <a href="#" onclick="showPage('sport-center')">Sport Center</a>
+            <a href="#" onclick="showPage('sport-center')">Hobby Center</a>
         </div>
     </div>
+
     <div class="main-container">
         <div class="sidebar">
             <img src="https://yt3.googleusercontent.com/ytc/AIdro_m6FmQmC8t1yaxb5cHRRc-WVzGtix-v9ie5zZ30_tnoKr7u=s900-c-k-c0x00ffffff-no-rj"
@@ -257,16 +393,62 @@
                 <p>
                     I'm <strong class="ml">Machine Learning Engineer</strong> with over 2 years of experience.<br>
                     I specialize in <span class="highlight">Computer Vision</span>, <span class="highlight">Deep
-                        Learning
-                    </span>, and <span class="highlight">Robotic Projects</span>.<br>
+                        Learning</span>, <span class="highlight">NLP </span>and <span class="highlight">Robotic
+                        Projects</span>.<br>
                     I'm also <strong class="embedded">Embedded System Engineer</strong> with 7 years of experience.<br>
-                    I work extensively with <span class="highlight">Linux</span> as well as <span class="highlight">Qt
-                        Projects</span>.
+                    I work extensively with <span class="highlight">Linux C++</span> as well as <span
+                        class="highlight">Qt
+                        for HMI projects</span>.
                 </p>
             </div>
 
             <!-- Projects Section -->
             <div id="experience" class="section">
+                <div class="timeline">
+                    <div class="timeline-item" data-company="Ipsumtek (France)">
+                        <div class="dot"></div>
+                        <p>2023 - Present</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="Emotion3D (Austria)">
+                        <div class="dot"></div>
+                        <p>Jan 2023 - June 2023</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="Teamwork Corporate (France)">
+                        <div class="dot"></div>
+                        <p>2021 - 2022</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="LM Control (France)">
+                        <div class="dot"></div>
+                        <p>2019 - 2021</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="Mediane Systeme (France)">
+                        <div class="dot"></div>
+                        <p>2018 - 2019</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="Guarani (France)">
+                        <div class="dot"></div>
+                        <p>2017 - 2018</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="Televic (China)">
+                        <div class="dot"></div>
+                        <p>2016 - 2017</p>
+                    </div>
+
+                    <div class="timeline-item" data-company="PSA Peugeot Citroën (France)">
+                        <div class="dot"></div>
+                        <p>2015</p>
+                    </div>
+                </div>
+
+                <!-- Tooltip for company name -->
+                <div id="tooltip" class="tooltip"></div>
+
                 <h2>Experience</h2>
 
                 <!-- Current Position -->
@@ -287,6 +469,7 @@
                     </ul>
 
                     <!-- YouTube Video -->
+                    <p><strong>Object detection and robotic arm control</strong></p>
                     <div class="video-container">
                         <iframe width="648" height="486"
                             src="https://www.youtube.com/embed/4FVHUbSEI2M?list=PLCtutju7ktsQ416Ma6dPqgfbb_lugZ7Tl"
@@ -310,7 +493,7 @@
                         <li>Extension of the training pipeline in Python to generate new features for machine learning
                             applications.</li>
                     </ul>
-                    <img src="assets/images/compress_image.jpg" alt="Experience Image">
+
                 </div>
 
                 <div class="experience-item">
@@ -325,6 +508,15 @@
                         <li>Implementation of CRISP-DM methodology for the data science team.</li>
                         <li>Intern training.</li>
                     </ul>
+                    <div class="experience-image">
+                        <p><strong>Real-time quality Control Platform</strong></p>
+                        <img src="assets/images/cam_frame.jpg" alt="Quality Control Platform">
+                    </div>
+
+                    <div class="experience-image">
+                        <p><strong>Rodelle Flaw Detection</strong></p>
+                        <img src="assets/images/detection_frame.png" alt="Rodelle Flaw Detection">
+                    </div>
                 </div>
 
                 <div class="experience-item">
@@ -338,7 +530,7 @@
                 </div>
 
                 <div class="experience-item">
-                    <h3>Software Engineer - Mediane Systeme (Lyon, France)</h3>
+                    <h3>Consultant Software Engineer - Mediane Systeme (Lyon, France)</h3>
                     <p><strong>Duration:</strong> September 2018 - June 2019</p>
                     <p><strong>Technologies:</strong> Python, C++, Qt, GIT, PostgreSQL, OpenSSL</p>
                     <ul>
@@ -351,7 +543,7 @@
                 </div>
 
                 <div class="experience-item">
-                    <h3>Software Consultant - Guarani (Aix-en-Provence, France)</h3>
+                    <h3>Consultant Software Engineer - Guarani (Aix-en-Provence, France)</h3>
                     <p><strong>Duration:</strong> July 2017 - July 2018</p>
                     <p><strong>Technologies:</strong> C++, Qt, GIT, PostgreSQL</p>
                     <ul>
@@ -394,13 +586,52 @@
 
             <!-- Sport Center Section -->
             <div id="sport-center" class="section">
-                <h2>Sport Center</h2>
-                <p>Details about my sports interests and activities.</p>
+                <h2>Hobby Center</h2>
+
+                <div class="sport-item">
+                    <strong>Weight Lifting</strong>
+                    <img src="assets/images/wl.jpg" alt="Weight Lifting">
+                </div>
+
+                <div class="sport-item">
+                    <strong>CrossFit</strong>
+                    <img src="assets/images/rowing.gif" alt="CrossFit">
+                </div>
+
+                <div class="sport-item">
+                    <strong>Hiking</strong>
+                    <img src="assets/images/hiking.jpg" alt="CrossFit">
+                </div>
+
             </div>
+
         </div>
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const timelineItems = document.querySelectorAll(".timeline-item");
+            const tooltip = document.getElementById("tooltip");
+
+            timelineItems.forEach(item => {
+                item.addEventListener("mouseenter", function (e) {
+                    const company = this.getAttribute("data-company");
+                    tooltip.textContent = company;
+                    tooltip.style.display = "block";
+                    tooltip.style.left = `${e.clientX}px`;
+                    tooltip.style.top = `${e.clientY - 40}px`;
+                });
+
+                item.addEventListener("mousemove", function (e) {
+                    tooltip.style.left = `${e.clientX}px`;
+                    tooltip.style.top = `${e.clientY - 40}px`;
+                });
+
+                item.addEventListener("mouseleave", function () {
+                    tooltip.style.display = "none";
+                });
+            });
+        });
         function showPage(page) {
             const sections = document.querySelectorAll('.section');
 
