@@ -122,8 +122,8 @@
         }
 
         .sidebar img {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin-bottom: 15px;
             margin-top: 75px;
@@ -141,6 +141,25 @@
             text-align: center;
             font-size: 14px;
         }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+
+        .highlight {
+            color: #4DB6AC;
+            /* Cyan */
+            font-weight: bold;
+        }
+
+        .highlight-alt {
+            color: #FFB74D;
+            /* Orange */
+            font-weight: bold;
+        }
+
 
         .education {
             margin-top: 30px;
@@ -161,15 +180,24 @@
             margin: 5px 0;
         }
 
-
         .content-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             padding-left: 250px;
-            /* Adjust to account for sidebar width */
             box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .content-wrapper {
+                padding-left: 0;
+                /* Remove padding when sidebar is hidden */
+            }
         }
 
         .section {
@@ -358,13 +386,33 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5);
         }
+
+        .specialization,
+        .skills {
+            width: 100%;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .specialization h3,
+        .skills h3 {
+            font-size: 2.0rem;
+            margin-bottom: 10px;
+            padding-top: 15px;
+        }
+
+        .specialization p,
+        .skills p {
+            font-size: 1.5rem;
+            margin: 5px 0;
+        }
     </style>
 </head>
 
 <body>
     <canvas id="background"></canvas>
     <div class="navbar">
-        <a href="#" class="name" onclick="showPage('home')"><strong>My Name</strong></a>
+        <a href="#" class="name" onclick="showPage('home')"><strong>Cheng</strong></a>
         <div class="links">
             <a href="#" onclick="showPage('experience')">Experience</a>
             <a href="#" onclick="showPage('sport-center')">Hobby Center</a>
@@ -373,33 +421,52 @@
 
     <div class="main-container">
         <div class="sidebar">
-            <img src="https://yt3.googleusercontent.com/ytc/AIdro_m6FmQmC8t1yaxb5cHRRc-WVzGtix-v9ie5zZ30_tnoKr7u=s900-c-k-c0x00ffffff-no-rj"
-                alt="My Photo">
-            <h2><strong>My Name</strong></h2>
-            <p>Machine Learning Engineer</p>
+            <img src="assets/images/profile.jpg" alt="My Photo">
+            <h2><strong>Cheng</strong></h2>
+            <p>Software and Machine Learning Engineer</p>
             <p>Embedded System Engineer</p>
 
             <!-- Education Section -->
             <div class="education">
                 <h3>Education</h3>
-                <p><strong>Master's in Computer Science</strong> - XYZ University, 2021</p>
-                <p><strong>Bachelor's in Electronics Engineering</strong> - ABC University, 2017</p>
+                <p><strong>Master's in Machine Learning</strong> University of Lyon 2, 2022</p>
+                <p><strong>Master's in Embedded System</strong> University of Paris-Sud(Saclay), 2015</p>
+                <p><strong>Bachelor's in Telecommunication and Electronic <br></strong> Shanghai University, 2009</p>
             </div>
         </div>
         <div class="content-wrapper">
             <!-- Home Section -->
             <div id="home" class="home-content">
-                <h1><strong>Hi, I’m My Name.</strong></h1>
+                <h1><strong>Hi, I’m Cheng.</strong></h1>
                 <p>
-                    I'm <strong class="ml">Machine Learning Engineer</strong> with over 2 years of experience.<br>
+                    I'm a <strong class="ml">Sofware and Machine Learning Engineer</strong> with over 2 years of
+                    experience.<br>
                     I specialize in <span class="highlight">Computer Vision</span>, <span class="highlight">Deep
                         Learning</span>, <span class="highlight">NLP </span>and <span class="highlight">Robotic
                         Projects</span>.<br>
-                    I'm also <strong class="embedded">Embedded System Engineer</strong> with 7 years of experience.<br>
+                    I'm also an <strong class="embedded">Embedded System Engineer</strong> with 7 years of
+                    experience.<br>
                     I work extensively with <span class="highlight">Linux C++</span> as well as <span
                         class="highlight">Qt
                         for HMI projects</span>.
                 </p>
+
+                <div class="specialization">
+                    <h3>Specialization</h3>
+                    <p><span class="highlight">Computer Vision</span>, <span class="highlight">Deep Learning</span>,
+                        <span class="highlight">NLP</span>, <span class="highlight">Embedded Systems</span>,
+                        <span class="highlight">Robotics</span>
+                    </p>
+                </div>
+                <div class="skills">
+                    <h3>Skills</h3>
+                    <p><strong>Programming Languages:</strong> <span class="highlight">Python, C++, JavaScript, HTML,
+                            CSS</span></p>
+                    <p><strong>Frameworks:</strong> <span class="highlight-alt">PyTorch, TensorFlow, OpenCV, MoveIt,
+                            Qt</span></p>
+                    <p><strong>Platforms:</strong> <span class="highlight">AWS, Dataiku</span></p>
+                    <p><strong>Operating Systems:</strong> <span class="highlight-alt">Linux, Windows</span></p>
+                </div>
             </div>
 
             <!-- Projects Section -->
@@ -453,7 +520,7 @@
 
                 <!-- Current Position -->
                 <div class="experience-item">
-                    <h3>Machine Learning Engineer at Ipsumtek (Sorgues, France)</h3>
+                    <h3>Software and Machine Learning Engineer at Ipsumtek (Sorgues, France)</h3>
                     <p><strong>Sept 2023 - Present</strong></p>
                     <p><strong>Technologies:</strong> Python, Pytorch, OpenCV, Linux, ROS, Moveit, C++, JavaScript,
                         Docker, Git, JIRA</p>
@@ -471,9 +538,8 @@
                     <!-- YouTube Video -->
                     <p><strong>Object detection and robotic arm control</strong></p>
                     <div class="video-container">
-                        <iframe width="648" height="486"
-                            src="https://www.youtube.com/embed/4FVHUbSEI2M?list=PLCtutju7ktsQ416Ma6dPqgfbb_lugZ7Tl"
-                            title="赛文奥特曼 01 隐形的挑战者" frameborder="0"
+                        <iframe width="864" height="486" src="https://www.youtube.com/embed/jACIGDu3-IY"
+                            title="ONYRO: The minibar is a robot that knocks on your door !" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
@@ -481,7 +547,7 @@
 
                 <!-- Previous Positions -->
                 <div class="experience-item">
-                    <h3>Machine Learning Engineer - Emotion3D (Vienna, Austria)</h3>
+                    <h3>Software Machine Learning Engineer - Emotion3D (Vienna, Austria)</h3>
                     <p><strong>Duration:</strong> January 2023 - June 2023</p>
                     <p><strong>Technologies:</strong> Python, OpenCV, PyTorch, TensorFlow, Linux, C++, Docker, GIT, JIRA
                     </p>
@@ -493,7 +559,10 @@
                         <li>Extension of the training pipeline in Python to generate new features for machine learning
                             applications.</li>
                     </ul>
-
+                    <div class="experience-image">
+                        <p><strong>Incabine detection</strong></p>
+                        <img src="assets/images/incabine.jpg" alt="Quality Control Platform">
+                    </div>
                 </div>
 
                 <div class="experience-item">
